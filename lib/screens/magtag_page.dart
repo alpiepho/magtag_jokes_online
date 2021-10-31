@@ -37,9 +37,9 @@ class _MagtagPageState extends State<MagtagPage> {
     });
   }
 
-  void _notifyEngine(int x, int y) async {
-    // switch (this._engine.getKeyType(x, y)) {
-  }
+  // void _notifyEngine(int x, int y) async {
+  //   // switch (this._engine.getKeyType(x, y)) {
+  // }
 
   @override
   initState() {
@@ -85,7 +85,7 @@ class _MagtagPageState extends State<MagtagPage> {
       mainColumnHeightPortrait = kMainColumnHeightPortrait2;
     }
 
-    colWidgets.add(const SizedBox(height: 40));
+    //colWidgets.add(const SizedBox(height: 40));
 
     // build the buttons
     for (var i = 0; i < _engine.grid.length; i++) {
@@ -96,6 +96,10 @@ class _MagtagPageState extends State<MagtagPage> {
         if (i==1 && j == 0) {
           style = kNumberTextStyleBig_robotomono;
         }
+        var mainAxisAlignment = MainAxisAlignment.center;
+        if (i == 2) {
+          mainAxisAlignment = MainAxisAlignment.end;
+        }
 
         var disabled = _engine.grid[i][j].disabled;
         if (disabled) {
@@ -103,31 +107,15 @@ class _MagtagPageState extends State<MagtagPage> {
         }
 
         var flex = _engine.grid[i][j].flex;
-        // build onpress function that calls engine with closure
-        var onPress = () {
-          _notifyEngine(i, j);
-        };
-        if (label == "?") {
-          // replace press onPress with settings page call
-          onPress = () {
-            showModalBottomSheet(
-              context: context,
-              builder: (BuildContext bc) {
-                return const Text("TBD");
-              },
-              isScrollControlled: true,
-            );
-          };
-        }
         if (flex > 0) {
           rowWidgets.add(
             Expanded(
               child: TimerButton(
-                onPress: onPress,
+                onPress: null,
                 margin: const EdgeInsets.fromLTRB(0, 0, 2, 2),
                 disabled: disabled,
                 cardChild: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: mainAxisAlignment,
                   children: <Widget>[
                     Text(
                       label,
@@ -151,9 +139,16 @@ class _MagtagPageState extends State<MagtagPage> {
 
     return Scaffold(
       backgroundColor: kInputPageBackgroundColor,
-      body: Center(
-        child: SizedBox(
+      body: Container(
+        alignment: Alignment.topCenter,
+        child: Container(
+          alignment: Alignment.topCenter,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            border: Border(),
+          ),
           width: kMainContainerWidthPortrait,
+          height: kMainContainerHeightPortrait,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: colWidgets,

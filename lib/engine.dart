@@ -34,8 +34,8 @@ class Engine {
     grid[row][col] = Cell(label: "battery: 00%");
     col = 0;
     row++;
-    grid[row][col] = Cell(label: "Joke goes here and here and here and here");
-    grid[row][col].flex = 6;
+    grid[row][col] = Cell(label: "Joke goes here 0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+    grid[row][col].flex = 100;
     col++;
     //grid[row][col] = Cell(label: "");
     col++;

@@ -6,6 +6,7 @@ const kVersion = '0.1';
 const kInputPageBackgroundColor = Colors.black45;
 
 const kMainContainerWidthPortrait = 500.0;
+const kMainContainerHeightPortrait = 250.0;
 
 const kMainColumnHeightPortrait = 80.0;
 const kMainColumnHeightPortrait2 = 60.0;
@@ -70,10 +71,11 @@ var kNumberTextStyle_robotomono = GoogleFonts.robotoMono(
   backgroundColor: Colors.white,
 );
 
+// ignore: non_constant_identifier_names
 var kNumberTextStyleBig_robotomono = GoogleFonts.robotoMono(
   fontSize: 24,
   color: Colors.black,
   fontWeight: FontWeight.bold,
   height: 1.1,
-    backgroundColor: Colors.white,
+  backgroundColor: Colors.white,
 );
