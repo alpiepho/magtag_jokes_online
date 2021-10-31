@@ -63,9 +63,17 @@ const kNumberTextStyle = TextStyle(
 
 // ignore: non_constant_identifier_names
 var kNumberTextStyle_robotomono = GoogleFonts.robotoMono(
-  fontSize: 24,
-  color: Colors.white,
+  fontSize: 10,
+  color: Colors.black,
   fontWeight: FontWeight.bold,
   height: 1.1,
+  backgroundColor: Colors.white,
 );
 
+var kNumberTextStyleBig_robotomono = GoogleFonts.robotoMono(
+  fontSize: 24,
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+  height: 1.1,
+    backgroundColor: Colors.white,
+);

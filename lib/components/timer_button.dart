@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 //import 'package:timers_tn/constants.dart';
 
 class TimerButton extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const TimerButton({
     required this.margin, 
     this.disabled = false,
