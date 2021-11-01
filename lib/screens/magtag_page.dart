@@ -12,8 +12,9 @@ class MagtagPage extends StatefulWidget {
 }
 
 class _MagtagPageState extends State<MagtagPage> {
-  static const sliderMax = 5.0;
+  static const sliderMax = 3.0;
   double _slider = 0.0;
+  int _messageType = 1;
 
   final Engine _engine = Engine();
 
@@ -38,6 +39,14 @@ class _MagtagPageState extends State<MagtagPage> {
   // void _notifyEngine(int x, int y) async {
   //   // switch (this._engine.getKeyType(x, y)) {
   // }
+
+  void onPress() async {
+    var messageType = (_slider).round();
+    _engine.reset(messageType);
+    setState(() {
+      _messageType = messageType;
+    });
+  }
 
   @override
   initState() {
@@ -152,11 +161,11 @@ class _MagtagPageState extends State<MagtagPage> {
           ),
           flex: 4,
         ),
-        const Expanded(
+        Expanded(
           child: TimerButton(
-            //onPress: ,
-            margin: EdgeInsets.all(10),
-            cardChild: Text(
+            onPress: onPress,
+            margin: const EdgeInsets.all(10),
+            cardChild: const Text(
               "RESET",
             ),
           ),

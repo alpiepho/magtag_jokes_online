@@ -19,11 +19,18 @@ class Engine {
   var grid = List.generate(numRows, (i) => List.generate(numCols, (index) => Cell()),
       growable: false);
 
+  int typeLabelX = 0;
+  int typeLabelY = 0;
+  int messageLabelX = 0;
+  int messageLabelY = 0;
+
   Engine() {
     int row = 0;
     int col = 0;
 
     grid[row][col] = Cell(label: "Bad-Dad-Joke Online");
+    typeLabelX = row;
+    typeLabelY = col;
     col++;
     grid[row][col] = Cell(label: "");
     col++;
@@ -32,6 +39,8 @@ class Engine {
     row++;
     grid[row][col] = Cell(label: "Joke goes here 0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
     grid[row][col].flex = 100;
+    messageLabelX = row;
+    messageLabelY = col;
     col++;
     //grid[row][col] = Cell(label: "");
     col++;
@@ -88,5 +97,22 @@ class Engine {
 
   String setLabel(int x, int y, String label) {
     return grid[x][y].label = label;
+  }
+
+  void reset(int _messageType) {
+    switch (_messageType) {
+      case 0: 
+        grid[typeLabelX][typeLabelY].label = "Bad-Dad-Joke Online";
+        break;
+      case 1: 
+        grid[typeLabelX][typeLabelY].label = "Quotes";
+        break;
+      case 2: 
+        grid[typeLabelX][typeLabelY].label = "Stoic Quotes";
+        break;
+      default: 
+        grid[typeLabelX][typeLabelY].label = "Bruce Lee Wisdom";
+        break;
+    }
   }
 }
