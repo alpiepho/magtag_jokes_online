@@ -8,14 +8,10 @@ const numCells = 9;
 class Cell {
   String label;
   int flex;
-  bool disabled;
-  bool active;
 
   Cell({
     this.label = '',
     this.flex = 1,
-    this.disabled = false,
-    this.active = false,
   });
 }
 

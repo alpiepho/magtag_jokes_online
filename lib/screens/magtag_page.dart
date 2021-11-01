@@ -1,11 +1,8 @@
-//import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:magtag_jokes_online/components/timer_button.dart';
 import 'package:magtag_jokes_online/constants.dart';
 import 'package:magtag_jokes_online/engine.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-//import 'dart:async';
 
 class MagtagPage extends StatefulWidget {
   const MagtagPage({Key? key}) : super(key: key);
@@ -15,7 +12,8 @@ class MagtagPage extends StatefulWidget {
 }
 
 class _MagtagPageState extends State<MagtagPage> {
-
+  static const sliderMax = 5.0;
+  double _slider = 0.0;
 
   final Engine _engine = Engine();
 
@@ -68,7 +66,6 @@ class _MagtagPageState extends State<MagtagPage> {
                 Text(
                   "Landscape mode is not supported.",
                   style: kLanscapeWarningTextStyle,
-
                 )
               ],
             ),
@@ -85,25 +82,18 @@ class _MagtagPageState extends State<MagtagPage> {
       mainColumnHeightPortrait = kMainColumnHeightPortrait2;
     }
 
-    //colWidgets.add(const SizedBox(height: 40));
-
-    // build the buttons
+    // build the screen
     for (var i = 0; i < _engine.grid.length; i++) {
       var rowWidgets = <Widget>[];
       for (var j = 0; j < _engine.grid[0].length; j++) {
         var label = _engine.getLabel(i, j);
         var style = kNumberTextStyle_robotomono;
-        if (i==1 && j == 0) {
+        if (i == 1 && j == 0) {
           style = kNumberTextStyleBig_robotomono;
         }
         var mainAxisAlignment = MainAxisAlignment.center;
         if (i == 2) {
           mainAxisAlignment = MainAxisAlignment.end;
-        }
-
-        var disabled = _engine.grid[i][j].disabled;
-        if (disabled) {
-          style = style.copyWith(color: kLightColor);
         }
 
         var flex = _engine.grid[i][j].flex;
@@ -113,7 +103,7 @@ class _MagtagPageState extends State<MagtagPage> {
               child: TimerButton(
                 onPress: null,
                 margin: const EdgeInsets.fromLTRB(0, 0, 2, 2),
-                disabled: disabled,
+                disabled: false,
                 cardChild: Column(
                   mainAxisAlignment: mainAxisAlignment,
                   children: <Widget>[
@@ -136,6 +126,49 @@ class _MagtagPageState extends State<MagtagPage> {
       );
       colWidgets.add(container);
     }
+    colWidgets.add(
+      Row(children: <Widget>[
+        Expanded(
+          child: SliderTheme(
+            data: SliderTheme.of(context).copyWith(
+              inactiveTrackColor: Colors.black,
+              activeTrackColor: Colors.black,
+              thumbColor: const Color(0xFF555555),
+              overlayColor: const Color(0x29555555),
+              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 15.0),
+              overlayShape: const RoundSliderOverlayShape(overlayRadius: 30.0),
+            ),
+            child: Slider(
+              value: _slider,
+              min: 0,
+              max: sliderMax,
+              onChanged: (double newValue) {
+                setState(() {
+                  _slider = newValue;
+                  //_updateValueLeftEtc(newValue);
+                });
+              },
+            ),
+          ),
+          flex: 4,
+        ),
+        const Expanded(
+          child: TimerButton(
+            //onPress: ,
+            margin: EdgeInsets.all(10),
+            cardChild: Text(
+              "RESET",
+            ),
+          ),
+          flex: 1,
+        ),
+      ]),
+    );
+    colWidgets.add(
+      const Text(
+        "                               slide to pick type, 'RESET' for new message",
+        ),
+      );
 
     return Scaffold(
       backgroundColor: kInputPageBackgroundColor,
