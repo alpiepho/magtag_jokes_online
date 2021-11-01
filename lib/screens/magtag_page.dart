@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:magtag_jokes_online/components/timer_button.dart';
+import 'package:magtag_jokes_online/components/app_button.dart';
 import 'package:magtag_jokes_online/constants.dart';
 import 'package:magtag_jokes_online/engine.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -109,7 +109,7 @@ class _MagtagPageState extends State<MagtagPage> {
         if (flex > 0) {
           rowWidgets.add(
             Expanded(
-              child: TimerButton(
+              child: AppButton(
                 onPress: null,
                 margin: const EdgeInsets.fromLTRB(0, 0, 2, 2),
                 disabled: false,
@@ -162,7 +162,7 @@ class _MagtagPageState extends State<MagtagPage> {
           flex: 4,
         ),
         Expanded(
-          child: TimerButton(
+          child: AppButton(
             onPress: onPress,
             margin: const EdgeInsets.all(10),
             cardChild: const Text(

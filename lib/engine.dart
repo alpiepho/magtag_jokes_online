@@ -24,6 +24,8 @@ class Engine {
   int messageLabelX = 0;
   int messageLabelY = 0;
 
+  int count = 0;
+
   Engine() {
     int row = 0;
     int col = 0;
@@ -103,16 +105,21 @@ class Engine {
     switch (_messageType) {
       case 0: 
         grid[typeLabelX][typeLabelY].label = "Bad-Dad-Joke Online";
+        grid[messageLabelX][messageLabelY].label = count.toString();
         break;
       case 1: 
         grid[typeLabelX][typeLabelY].label = "Quotes";
+        grid[messageLabelX][messageLabelY].label = count.toString();
         break;
       case 2: 
         grid[typeLabelX][typeLabelY].label = "Stoic Quotes";
+        grid[messageLabelX][messageLabelY].label = count.toString();
         break;
       default: 
         grid[typeLabelX][typeLabelY].label = "Bruce Lee Wisdom";
+        grid[messageLabelX][messageLabelY].label = count.toString();
         break;
     }
+    count++;
   }
 }
