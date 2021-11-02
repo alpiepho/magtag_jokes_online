@@ -57,7 +57,7 @@ class _MagtagPageState extends State<MagtagPage> {
 
   void onHelp() async {
     launch('https://github.com/alpiepho/magtag_jokes_online/blob/master/README.md');
-    Navigator.of(context).pop();
+    //Navigator.of(context).pop();
   }
 
   @override
