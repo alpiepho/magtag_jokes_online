@@ -36,12 +36,12 @@ const RESOURCES = {
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = [
-  "/",
-"main.dart.js",
-"index.html",
-"assets/NOTICES",
-"assets/AssetManifest.json",
-"assets/FontManifest.json"];
+  "https://alpiepho.github.io/magtag_jokes_online/",
+"https://alpiepho.github.io/magtag_jokes_online/main.dart.js",
+"https://alpiepho.github.io/magtag_jokes_online/index.html",
+"https://alpiepho.github.io/magtag_jokes_online/assets/NOTICES",
+"https://alpiepho.github.io/magtag_jokes_online/assets/AssetManifest.json",
+"https://alpiepho.github.io/magtag_jokes_online/assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
 self.addEventListener("install", (event) => {
   self.skipWaiting();
