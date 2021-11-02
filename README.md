@@ -1,13 +1,12 @@
 ## Get Application
 Version: 0.1
 
-
-<b>UNDER CONSTRUCTION: The following links are not active yet.</b><br>
-
-
 GH-Pages site: https://alpiepho.github.io/magtag_jokes_online/
 
 or QR Code:
+
+<br>
+<b>TRY ME!</b>
 
 ![QR Code](./qr-code.png)
 
@@ -29,12 +28,13 @@ There are only 2 user controls: 1) a slider and 2) a "next" button.  The next bu
 
 The application from the above URL will open a respoonsive web page. It is best viewed on a mobile phone with the most testing on and iPhoneX. If opened on iPhone Safari, you can used the middle bottom button to add to the Home Screen (as a PWA).
 
-NOTE: unlike the hardware version, the list of jokes etc. is fixed with each installation.  To get newer jokes, close and re-open the app so it will update from the server.
 
 ## Learnings
 
 Below are some things I learned with this project.
-- TBD
+- good refresher on Flutter
+- was able to leverage many pieces from other projects
+- code it probably a little messy
 
 ## Ongoing Progress
 
@@ -53,15 +53,14 @@ Below are some things I learned with this project.
 - [done] set up peanut publish
 - [done] links to gh etc
 - [done] fix line height
-- engine access sites for messages
-- fix quotes
+- [done] back to 1hr
+- [done] qr code with try-me
+- [done] engine access sites for messages
+- [done] update readme
 - save message type 
-- back to 1hr
 - favicon and icons
-- qr code with try-me
-- update readme
 
 
 ## Known Issues to Fix and TODO
-- TBD
+- the http get of quotes fails
 
