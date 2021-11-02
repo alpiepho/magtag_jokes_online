@@ -57,10 +57,11 @@ Below are some things I learned with this project.
 - [done] qr code with try-me
 - [done] engine access sites for messages
 - [done] update readme
+- [done] favicon and icons
 - save message type 
-- favicon and icons
 
 
 ## Known Issues to Fix and TODO
-- the http get of quotes fails
+- the http get of quotes fails for CORS (request is currently disabled)
+- need to review code, refactor?
 

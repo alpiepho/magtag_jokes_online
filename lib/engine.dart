@@ -143,18 +143,20 @@ class Engine {
         break;
       case 1: 
         // get quote online
-        final response = await http.get(
-          Uri.parse('https://zenquotes.io/api/random'),
-          headers: {"accept": "application/json"});
+        // WARNING: fails for:
+        // has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+        // final response = await http.get(
+        //   Uri.parse('https://zenquotes.io/api/random'),
+        //   headers: {"accept": "application/json"});
 
-        if (response.statusCode == 200) {
-          //print(response.body);
-          var value = jsonDecode(response.body);
-          var temp = value[0]['q'] + " - " + value[0]['a'];
-          if (temp.toString().isNotEmpty && temp.toString().length < 150) {
-            grid[messageLabelX][messageLabelY].label = temp.toString();
-          }
-        }
+        // if (response.statusCode == 200) {
+        //   //print(response.body);
+        //   var value = jsonDecode(response.body);
+        //   var temp = value[0]['q'] + " - " + value[0]['a'];
+        //   if (temp.toString().isNotEmpty && temp.toString().length < 150) {
+        //     grid[messageLabelX][messageLabelY].label = temp.toString();
+        //   }
+        // }
         break;
       case 2: 
         // get stoic online
