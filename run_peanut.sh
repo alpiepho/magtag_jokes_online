@@ -30,6 +30,6 @@ git add index.html flutter_service_worker.js
 git commit -m "update gh-pages paths"
 git push
 
-git checkout master
+git checkout main
 git stash pop
 flutter pub get
