@@ -4,9 +4,9 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "version.json": "62c50642cc34b4be63257b3bcbc8ac1f",
-"index.html": "ffc710eef1d6079d72c4431787761b23",
-"/": "ffc710eef1d6079d72c4431787761b23",
-"main.dart.js": "2348f63c960f57bf090c94c54f0c9b4f",
+"index.html": "ec3176e04b70ada8ee3cf8821adcda13",
+"/": "ec3176e04b70ada8ee3cf8821adcda13",
+"main.dart.js": "f57e339b64a85e094256ef50726ec322",
 "favicon.png": "bb73b0633268844242ee440343000ef4",
 "icons/1024.png": "f46578323f957cbf54a1a4f0fcacca16",
 "icons/60.png": "d2c4ca96e29a6476a048617321ad6908",
@@ -36,12 +36,12 @@ const RESOURCES = {
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = [
-  "https://alpiepho.github.io/magtag_jokes_online/",
-"https://alpiepho.github.io/magtag_jokes_online/main.dart.js",
-"https://alpiepho.github.io/magtag_jokes_online/index.html",
-"https://alpiepho.github.io/magtag_jokes_online/assets/NOTICES",
-"https://alpiepho.github.io/magtag_jokes_online/assets/AssetManifest.json",
-"https://alpiepho.github.io/magtag_jokes_online/assets/FontManifest.json"];
+  "/",
+"main.dart.js",
+"index.html",
+"assets/NOTICES",
+"assets/AssetManifest.json",
+"assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
 self.addEventListener("install", (event) => {
   self.skipWaiting();
