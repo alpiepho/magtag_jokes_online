@@ -40,10 +40,6 @@ class _MagtagPageState extends State<MagtagPage> {
     });
   }
 
-  // void _notifyEngine(int x, int y) async {
-  //   // switch (this._engine.getKeyType(x, y)) {
-  // }
-
   void onPress() async {
     var messageType = (_slider).round();
     _engine.reset(messageType, onResponse);
@@ -80,7 +76,7 @@ class _MagtagPageState extends State<MagtagPage> {
       });
     }
     else {
-      timer = Timer(const Duration(seconds: 60), () => {
+      timer = Timer(const Duration(seconds: 3600), () => {
         onPress()
       });
     }

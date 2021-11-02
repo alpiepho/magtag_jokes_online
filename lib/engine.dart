@@ -143,9 +143,32 @@ class Engine {
         break;
       case 1: 
         // get quote online
+        final response = await http.get(
+          Uri.parse('https://zenquotes.io/api/random'),
+          headers: {"accept": "application/json"});
+
+        if (response.statusCode == 200) {
+          //print(response.body);
+          var value = jsonDecode(response.body);
+          var temp = value[0]['q'] + " - " + value[0]['a'];
+          if (temp.toString().isNotEmpty && temp.toString().length < 150) {
+            grid[messageLabelX][messageLabelY].label = temp.toString();
+          }
+        }
         break;
       case 2: 
         // get stoic online
+        final response = await http.get(
+          Uri.parse('https://stoicquotesapi.com/v1/api/quotes/random'),
+          headers: {"accept": "application/json"});
+        if (response.statusCode == 200) {
+          //print(response.body);
+          var value = jsonDecode(response.body);
+          var temp = value['body'] + " - " + value['author'];
+          if (temp.toString().isNotEmpty) {
+            grid[messageLabelX][messageLabelY].label = temp.toString();
+          }
+        }
         break;
       default: 
         // skip online
@@ -156,12 +179,6 @@ class Engine {
     }
   }
 }
-
-
-
-
-
-
 
 // def get_online_quote(count):
 //     try:
@@ -190,34 +207,4 @@ class Engine {
 //         MAGTAG.set_text(f"..", 3)
 //     return count
 
-
-// def get_online_stoic1(count):
-//     try:
-//         DATA_SOURCE = "https://stoicquotesapi.com/v1/api/quotes/random"
-//         print("trying: ", DATA_SOURCE)
-//         MAGTAG.network.connect()
-//         RESPONSE = MAGTAG.network.requests.get(
-//             DATA_SOURCE
-//         )
-//         VALUE = RESPONSE.json()
-//         # {"id":42,"body":"If a man knows not to which port he sails, no wind is favorable.","author_id":2,"author":"Seneca"}
-//         temp = VALUE['body'] + " - " + VALUE['author']
-//         print(temp)
-//         # if "Too many requests" in temp:
-//         #     raise Exception("Too many requests") 
-//         if len(temp) > MAXLEN:
-//             raise Exception("Too long") 
-//         MAGTAG.set_text(temp, 2, False)
-//         count = count + 1
-//         if sleep_level != 2:
-//             MAGTAG.set_text(f"online: {count}", 3)
-
-//     except Exception as e:
-//         print("Some error occured, retrying! -", e)
-//         message = messages[random.randint(0, len(messages) - 1)]
-//         MAGTAG.set_text(message, 2, False)
-//         MAGTAG.set_text(f"..", 3)
-//     return count
-
-//     return count
 

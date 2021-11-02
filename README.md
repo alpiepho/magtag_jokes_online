@@ -51,14 +51,15 @@ Below are some things I learned with this project.
 - [done] hook up slider
 - [done] split always list of jokes
 - [done] set up peanut publish
-- engine access sites for messages
 - [done] links to gh etc
-- favicon and icons
 - [done] fix line height
+- engine access sites for messages
+- fix quotes
+- save message type 
+- back to 1hr
+- favicon and icons
 - qr code with try-me
 - update readme
-- save message type 
-- set up Github action for updating?
 
 
 ## Known Issues to Fix and TODO
