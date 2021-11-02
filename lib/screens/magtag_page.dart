@@ -46,7 +46,10 @@ class _MagtagPageState extends State<MagtagPage> {
 
   void onPress() async {
     var messageType = (_slider).round();
-    _engine.reset(messageType);
+    _engine.reset(messageType, onResponse);
+  }
+
+  void onResponse() async {
     setState(() {
       _messageCount += 1;
     });

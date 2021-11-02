@@ -57,6 +57,7 @@ Below are some things I learned with this project.
 - [done] fix line height
 - qr code with try-me
 - update readme
+- save message type 
 - set up Github action for updating?
 
 

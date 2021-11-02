@@ -105,7 +105,7 @@ class Engine {
     return grid[x][y].label = label;
   }
 
-  void reset(int _messageType) async {
+  void reset(int _messageType, Function? onResponse) async {
     switch (_messageType) {
       case 0: 
         grid[typeLabelX][typeLabelY].label = "Bad-Dad-Joke Online";
@@ -129,8 +129,11 @@ class Engine {
       switch (_messageType) {
       case 0: 
         // get joke online
-        final response = await http.get(Uri.parse('https://icanhazdadjoke.com/'));
+        final response = await http.get(
+          Uri.parse('https://icanhazdadjoke.com/'),
+          headers: {"accept": "application/json"});
         if (response.statusCode == 200) {
+          //print(response.body);
           var value = jsonDecode(response.body);
           var temp = value["joke"];
           if (temp.toString().isNotEmpty) {
@@ -148,6 +151,9 @@ class Engine {
         // skip online
         break;
     }
+    if (onResponse != null) {
+      onResponse();
+    }
   }
 }
 
@@ -155,30 +161,7 @@ class Engine {
 
 
 
-// def get_online_joke(count):
-//     try:
-//         DATA_SOURCE = "https://icanhazdadjoke.com/"
-//         print("trying: ", DATA_SOURCE)
-//         MAGTAG.network.connect()
-//         RESPONSE = MAGTAG.network.requests.get(
-//             DATA_SOURCE, headers={"accept": "application/json"}
-//         )
-//         VALUE = RESPONSE.json()
-//         temp = VALUE["joke"]
-//         print(temp)
-//         if len(temp) > MAXLEN:
-//             raise Exception("Too long") 
-//         MAGTAG.set_text(temp, 2, False)
-//         count = count + 1
-//         if sleep_level != 2:
-//             MAGTAG.set_text(f"online: {count}", 3)
 
-//     except Exception as e:
-//         print("Some error occured, retrying! -", e)
-//         message = messages[random.randint(0, len(messages) - 1)]
-//         MAGTAG.set_text(message, 2, False)
-//         MAGTAG.set_text(f"..", 3)
-//     return count
 
 // def get_online_quote(count):
 //     try:
