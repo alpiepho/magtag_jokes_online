@@ -1,3 +1,4 @@
+// ignore: non_constant_identifier_names
 var backup_bruce = [
   "Nowadays you don't go around on the street kicking people, punching people \u2014 because if you do (makes gun shape with hand), well that's it \u2014 I don't care how good you are.\nBruce Lee interview on the Pierre Berton Show (1971)",
   "When I look around I always learn something, and that is to be yourself always, express yourself, and have faith in yourself. Do not go out and look for a successful personality and duplicate him. Now that seems to be the prevalent thing happening in Hong Kong, like they always copy mannerism, but they never start from the root of his being and that is, how can I be me?\nBruce Lee",

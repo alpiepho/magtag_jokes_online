@@ -1,3 +1,4 @@
+// ignore: non_constant_identifier_names
 var backup_quotes = [
   "Courage is what it takes to stand up and speak. Courage is also what it takes to sit down and listen. - Winston Churchill",
   "Dreams are the royal road to the unconscious.  - Sigmund Freud",

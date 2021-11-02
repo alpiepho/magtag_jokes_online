@@ -4,6 +4,7 @@ import 'package:magtag_jokes_online/constants.dart';
 import 'package:magtag_jokes_online/engine.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
+import 'package:url_launcher/url_launcher.dart';
 
 class MagtagPage extends StatefulWidget {
   const MagtagPage({Key? key}) : super(key: key);
@@ -49,6 +50,11 @@ class _MagtagPageState extends State<MagtagPage> {
     setState(() {
       _messageCount += 1;
     });
+  }
+
+  void onHelp() async {
+    launch('https://github.com/alpiepho/magtag_jokes_online/blob/master/README.md');
+    Navigator.of(context).pop();
   }
 
   @override
@@ -187,29 +193,46 @@ class _MagtagPageState extends State<MagtagPage> {
         ),
       ]),
     );
-    colWidgets.add(
-      const Text(
-        "                               slide to pick type, 'RESET' for new message",
-        ),
-      );
 
     return Scaffold(
       backgroundColor: kInputPageBackgroundColor,
-      body: Container(
-        alignment: Alignment.topCenter,
-        child: Container(
-          alignment: Alignment.topCenter,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            border: Border(),
+      body: Column(
+        children: [
+          Container(
+            alignment: Alignment.topCenter,
+            child: Container(
+              alignment: Alignment.topCenter,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                border: Border(),
+              ),
+              width: kMainContainerWidthPortrait,
+              height: kMainContainerHeightPortrait,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: colWidgets,
+              ),
+            ),
           ),
-          width: kMainContainerWidthPortrait,
-          height: kMainContainerHeightPortrait,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: colWidgets,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: const Text(
+            "slide to pick type, 'RESET' for new message",
+            style: kNumberTextStyle,
+            ),
           ),
-        ),
+          GestureDetector(
+              child: new Text(
+                "https://github.com/alpiepho/magtag_jokes_online",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.blue,
+                ),
+              ),
+              onTap: onHelp,
+            ),
+
+        ],
       ),
     );
   }

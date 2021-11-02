@@ -41,18 +41,23 @@ Below are some things I learned with this project.
 - BASIC IMPLEMENTATION
 - [done] start project from flutter create
 - [done] update README
-- leverage [timers_tn](https://github.com/alpiepho/timers_tn) since it has many of the layout pieces we need
-- clean up unwanted
-- create 3x3 grid
-- engine for jokes from data files
-- start first joke list
-- start first list for other subjects
-- hook up next
-- hook up slider
-- split always list of jokes
-- set up peanut publish
+- [done] leverage [timers_tn](https://github.com/alpiepho/timers_tn) since it has many of the layout pieces we need
+- [done] clean up unwanted
+- [done] create 3x3 grid
+- [done] engine for jokes from data files
+- [done] start first joke list
+- [done] start first list for other subjects
+- [done] hook up next
+- [done] hook up slider
+- [done] split always list of jokes
+- [done] set up peanut publish
+- engine access sites for messages
+- [done] links to gh etc
 - favicon and icons
-- set up Github action for updating
+- [done] fix line height
+- qr code with try-me
+- update readme
+- set up Github action for updating?
 
 
 ## Known Issues to Fix and TODO

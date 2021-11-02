@@ -1,3 +1,4 @@
+// ignore: non_constant_identifier_names
 var backup_stoics = [
   "To love only what happens, what was destined. No greater harmony. - Marcus Aurelius",
   "Hang on to your youthful enthusiasms - you'll be able to use them better when you're older. - Seneca",

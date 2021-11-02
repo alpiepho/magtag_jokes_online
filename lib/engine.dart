@@ -1,9 +1,11 @@
+import 'dart:convert';
+
 import 'package:magtag_jokes_online/constants.dart';
 import 'package:magtag_jokes_online/backup_bruce.dart';
 import 'package:magtag_jokes_online/backup_jokes.dart';
 import 'package:magtag_jokes_online/backup_quotes.dart';
 import 'package:magtag_jokes_online/backup_stoics1.dart';
-
+import 'package:http/http.dart' as http;
 
 const numRows = 3;
 const numCols = 3;
@@ -103,7 +105,7 @@ class Engine {
     return grid[x][y].label = label;
   }
 
-  void reset(int _messageType) {
+  void reset(int _messageType) async {
     switch (_messageType) {
       case 0: 
         grid[typeLabelX][typeLabelY].label = "Bad-Dad-Joke Online";
@@ -127,6 +129,14 @@ class Engine {
       switch (_messageType) {
       case 0: 
         // get joke online
+        final response = await http.get(Uri.parse('https://icanhazdadjoke.com/'));
+        if (response.statusCode == 200) {
+          var value = jsonDecode(response.body);
+          var temp = value["joke"];
+          if (temp.toString().isNotEmpty) {
+            grid[messageLabelX][messageLabelY].label = temp.toString();
+          }
+        }
         break;
       case 1: 
         // get quote online
@@ -226,12 +236,5 @@ class Engine {
 //         MAGTAG.set_text(f"..", 3)
 //     return count
 
-//     return count
-
-// def get_online_bruce(count):
-//     # all quotes in backup
-//     message = messages[random.randint(0, len(messages) - 1)]
-//     MAGTAG.set_text(message, 2, False)
-//     MAGTAG.set_text(f"..", 3)
 //     return count
 

@@ -55,12 +55,12 @@ const kLanscapeWarningTextStyle = TextStyle(
 //   fontStyle: FontStyle.italic,
 // );
 
-// const kNumberTextStyle = TextStyle(
-//   fontSize: 36,
-//   color: Colors.white,
-//   fontWeight: FontWeight.bold,
-//   height: 1.1,
-// );
+const kNumberTextStyle = TextStyle(
+  fontSize: 12,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+  height: 1.1,
+);
 
 // ignore: non_constant_identifier_names
 var kNumberTextStyle_robotomono = GoogleFonts.robotoMono(
@@ -73,9 +73,10 @@ var kNumberTextStyle_robotomono = GoogleFonts.robotoMono(
 
 // ignore: non_constant_identifier_names
 var kNumberTextStyleBig_robotomono = GoogleFonts.robotoMono(
-  fontSize: 24,
+  fontSize: 20,
   color: Colors.black,
   fontWeight: FontWeight.bold,
-  height: 1.1,
+  height: 1.4,
   backgroundColor: Colors.white,
 );
+
