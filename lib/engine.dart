@@ -1,4 +1,8 @@
 import 'package:magtag_jokes_online/constants.dart';
+import 'package:magtag_jokes_online/backup_bruce.dart';
+import 'package:magtag_jokes_online/backup_jokes.dart';
+import 'package:magtag_jokes_online/backup_quotes.dart';
+import 'package:magtag_jokes_online/backup_stoics1.dart';
 
 
 const numRows = 3;
@@ -24,8 +28,6 @@ class Engine {
   int messageLabelX = 0;
   int messageLabelY = 0;
 
-  int count = 0;
-
   Engine() {
     int row = 0;
     int col = 0;
@@ -36,10 +38,10 @@ class Engine {
     col++;
     grid[row][col] = Cell(label: "");
     col++;
-    grid[row][col] = Cell(label: "battery: 00%");
+    grid[row][col] = Cell(label: "battery: 100%");
     col = 0;
     row++;
-    grid[row][col] = Cell(label: "Joke goes here 0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+    grid[row][col] = Cell(label: "Wait for it...");
     grid[row][col].flex = 100;
     messageLabelX = row;
     messageLabelY = col;
@@ -105,21 +107,131 @@ class Engine {
     switch (_messageType) {
       case 0: 
         grid[typeLabelX][typeLabelY].label = "Bad-Dad-Joke Online";
-        grid[messageLabelX][messageLabelY].label = count.toString();
+        grid[messageLabelX][messageLabelY].label = (backup_jokes..shuffle()).first;
         break;
       case 1: 
         grid[typeLabelX][typeLabelY].label = "Quotes";
-        grid[messageLabelX][messageLabelY].label = count.toString();
+        grid[messageLabelX][messageLabelY].label = (backup_quotes..shuffle()).first;
         break;
       case 2: 
         grid[typeLabelX][typeLabelY].label = "Stoic Quotes";
-        grid[messageLabelX][messageLabelY].label = count.toString();
+        grid[messageLabelX][messageLabelY].label = (backup_stoics..shuffle()).first;
         break;
       default: 
         grid[typeLabelX][typeLabelY].label = "Bruce Lee Wisdom";
-        grid[messageLabelX][messageLabelY].label = count.toString();
+        grid[messageLabelX][messageLabelY].label = (backup_bruce..shuffle()).first;
         break;
     }
-    count++;
+
+    // attempt to get online
+      switch (_messageType) {
+      case 0: 
+        // get joke online
+        break;
+      case 1: 
+        // get quote online
+        break;
+      case 2: 
+        // get stoic online
+        break;
+      default: 
+        // skip online
+        break;
+    }
   }
 }
+
+
+
+
+
+// def get_online_joke(count):
+//     try:
+//         DATA_SOURCE = "https://icanhazdadjoke.com/"
+//         print("trying: ", DATA_SOURCE)
+//         MAGTAG.network.connect()
+//         RESPONSE = MAGTAG.network.requests.get(
+//             DATA_SOURCE, headers={"accept": "application/json"}
+//         )
+//         VALUE = RESPONSE.json()
+//         temp = VALUE["joke"]
+//         print(temp)
+//         if len(temp) > MAXLEN:
+//             raise Exception("Too long") 
+//         MAGTAG.set_text(temp, 2, False)
+//         count = count + 1
+//         if sleep_level != 2:
+//             MAGTAG.set_text(f"online: {count}", 3)
+
+//     except Exception as e:
+//         print("Some error occured, retrying! -", e)
+//         message = messages[random.randint(0, len(messages) - 1)]
+//         MAGTAG.set_text(message, 2, False)
+//         MAGTAG.set_text(f"..", 3)
+//     return count
+
+// def get_online_quote(count):
+//     try:
+//         DATA_SOURCE = "https://zenquotes.io/api/random"
+//         print("trying: ", DATA_SOURCE)
+//         MAGTAG.network.connect()
+//         RESPONSE = MAGTAG.network.requests.get(
+//             DATA_SOURCE
+//         )
+//         VALUE = RESPONSE.json()
+//         temp = VALUE[0]['q'] + " - " + VALUE[0]['a']
+//         print(temp)
+//         if "Too many requests" in temp:
+//             raise Exception("Too many requests") 
+//         if len(temp) > MAXLEN:
+//             raise Exception("Too long") 
+//         MAGTAG.set_text(temp, 2, False)
+//         count = count + 1
+//         if sleep_level != 2:
+//             MAGTAG.set_text(f"online: {count}", 3)
+
+//     except Exception as e:
+//         print("Some error occured, retrying! -", e)
+//         message = messages[random.randint(0, len(messages) - 1)]
+//         MAGTAG.set_text(message, 2, False)
+//         MAGTAG.set_text(f"..", 3)
+//     return count
+
+
+// def get_online_stoic1(count):
+//     try:
+//         DATA_SOURCE = "https://stoicquotesapi.com/v1/api/quotes/random"
+//         print("trying: ", DATA_SOURCE)
+//         MAGTAG.network.connect()
+//         RESPONSE = MAGTAG.network.requests.get(
+//             DATA_SOURCE
+//         )
+//         VALUE = RESPONSE.json()
+//         # {"id":42,"body":"If a man knows not to which port he sails, no wind is favorable.","author_id":2,"author":"Seneca"}
+//         temp = VALUE['body'] + " - " + VALUE['author']
+//         print(temp)
+//         # if "Too many requests" in temp:
+//         #     raise Exception("Too many requests") 
+//         if len(temp) > MAXLEN:
+//             raise Exception("Too long") 
+//         MAGTAG.set_text(temp, 2, False)
+//         count = count + 1
+//         if sleep_level != 2:
+//             MAGTAG.set_text(f"online: {count}", 3)
+
+//     except Exception as e:
+//         print("Some error occured, retrying! -", e)
+//         message = messages[random.randint(0, len(messages) - 1)]
+//         MAGTAG.set_text(message, 2, False)
+//         MAGTAG.set_text(f"..", 3)
+//     return count
+
+//     return count
+
+// def get_online_bruce(count):
+//     # all quotes in backup
+//     message = messages[random.randint(0, len(messages) - 1)]
+//     MAGTAG.set_text(message, 2, False)
+//     MAGTAG.set_text(f"..", 3)
+//     return count
+

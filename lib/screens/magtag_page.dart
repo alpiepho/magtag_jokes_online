@@ -3,6 +3,7 @@ import 'package:magtag_jokes_online/components/app_button.dart';
 import 'package:magtag_jokes_online/constants.dart';
 import 'package:magtag_jokes_online/engine.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
 
 class MagtagPage extends StatefulWidget {
   const MagtagPage({Key? key}) : super(key: key);
@@ -14,9 +15,11 @@ class MagtagPage extends StatefulWidget {
 class _MagtagPageState extends State<MagtagPage> {
   static const sliderMax = 3.0;
   double _slider = 0.0;
-  int _messageType = 1;
+  int _messageCount = 0;
 
   final Engine _engine = Engine();
+
+  var timer = Timer(const Duration(seconds: 5), () => {});
 
   void _loadEngine() async {
     final prefs = await SharedPreferences.getInstance();
@@ -44,7 +47,7 @@ class _MagtagPageState extends State<MagtagPage> {
     var messageType = (_slider).round();
     _engine.reset(messageType);
     setState(() {
-      _messageType = messageType;
+      _messageCount += 1;
     });
   }
 
@@ -61,6 +64,17 @@ class _MagtagPageState extends State<MagtagPage> {
 
   @override
   Widget build(BuildContext context) {
+    timer.cancel();
+    if (_messageCount == 0) {
+      timer = Timer(const Duration(seconds: 1), () => {
+        onPress()
+      });
+    }
+    else {
+      timer = Timer(const Duration(seconds: 60), () => {
+        onPress()
+      });
+    }
     var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
     if (!isPortrait) {
       return Scaffold(
