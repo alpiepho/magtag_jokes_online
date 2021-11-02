@@ -27,11 +27,14 @@ class _MagtagPageState extends State<MagtagPage> {
     var packed = prefs.getString('engine') ?? "";
     _engine.unpack(packed);
     _fromEngine();
+    var temp = prefs.getString('slider') ?? "0.0";
+    _slider = double.parse(temp);
   }
 
   void _saveEngine() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString('engine', _engine.pack());
+    prefs.setString('slider', _slider.toString());
   }
 
   void _fromEngine() async {
@@ -43,6 +46,7 @@ class _MagtagPageState extends State<MagtagPage> {
   void onPress() async {
     var messageType = (_slider).round();
     _engine.reset(messageType, onResponse);
+    _saveEngine();
   }
 
   void onResponse() async {

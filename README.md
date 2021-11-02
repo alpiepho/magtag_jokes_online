@@ -58,7 +58,7 @@ Below are some things I learned with this project.
 - [done] engine access sites for messages
 - [done] update readme
 - [done] favicon and icons
-- save message type 
+- [done] save slider value
 
 
 ## Known Issues to Fix and TODO
