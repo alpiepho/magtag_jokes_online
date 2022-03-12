@@ -56,7 +56,8 @@ class _MagtagPageState extends State<MagtagPage> {
   }
 
   void onHelp() async {
-    launch('https://github.com/alpiepho/magtag_jokes_online/blob/master/README.md');
+    launch(
+        'https://github.com/alpiepho/magtag_jokes_online/blob/master/README.md');
     //Navigator.of(context).pop();
   }
 
@@ -75,14 +76,9 @@ class _MagtagPageState extends State<MagtagPage> {
   Widget build(BuildContext context) {
     timer.cancel();
     if (_messageCount == 0) {
-      timer = Timer(const Duration(seconds: 1), () => {
-        onPress()
-      });
-    }
-    else {
-      timer = Timer(const Duration(seconds: 3600), () => {
-        onPress()
-      });
+      timer = Timer(const Duration(seconds: 1), () => {onPress()});
+    } else {
+      timer = Timer(const Duration(seconds: 3600), () => {onPress()});
     }
     var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
     if (!isPortrait) {
@@ -217,24 +213,23 @@ class _MagtagPageState extends State<MagtagPage> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: const Text(
-            "slide to pick type, 'RESET' for new message",
-            style: kNumberTextStyle,
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              "slide to pick type, 'RESET' for new message",
+              style: kNumberTextStyle,
             ),
           ),
           GestureDetector(
-              child: new Text(
-                "https://github.com/alpiepho/magtag_jokes_online",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.blue,
-                ),
+            child: const Text(
+              "https://github.com/alpiepho/magtag_jokes_online",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.blue,
               ),
-              onTap: onHelp,
             ),
-
+            onTap: onHelp,
+          ),
         ],
       ),
     );
